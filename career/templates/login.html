@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-familyx: Arial, sans-serif; /* Consistent font */
+            background-color: lightblue; /* Light background to match others */
+            display: flex; /* Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height */
+            margin: 0; /* No margin */
+        }
+
+        .container {
+            background-color: #fff; /* White background for container */
+            padding: 40px; /* Padding inside the container */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            width: 350px; /* Fixed width for the login form */
+            text-align: center; /* Center text */
+        }
+
+        .container h1 {
+            font-size: 24px; /* Font size for heading */
+            margin-bottom: 20px; /* Space below heading */
+            color: Darkblue; /* Dark green for heading */
+        }
+
+        .container form {
+            display: flex; /* Flexbox for form layout */
+            flex-direction: column; /* Vertical stacking of inputs */
+        }
+
+        .container form input {
+            padding: 10px; /* Padding inside inputs */
+            margin-bottom: 15px; /* Space below inputs */
+            border: 1px solid Darkblue; /* Light border */
+            border-radius: 30px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+        }
+
+        .container form button {
+            padding: 10px; /* Padding inside buttons */
+            background-color: Darkblue; /* Green background for buttons */
+            color: #fff; /* White text */
+            border: none; /* No border */
+            border-radius: 50px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .container form button:hover {
+            background-color: lightblue;
+             color:black;/* Darker green on hover */
+        }
+
+        .error-message {
+            color: #dc3545; /* Red for error messages */
+            font-size: 14px; /* Font size for error messages */
+        }
+
+        .register-link {
+            margin-top: 15px; /* Space above link */
+            display: block; /* Block display for proper alignment */
+            color: #007bff; /* Blue color for links */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .register-link:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        label{
+        color:Darkblue;
+       }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Display form fields -->
+        <button type="submit">Login</button>
+
+    </form>
+
+
+    {% if error %}
+        <p class="error-message">{{ error }}</p> <!-- Display error message if exists -->
+    {% endif %}
+
+    <a href="{% url 'register' %}" class="register-link">Don't have an account? Register here</a>
+</div>
+
+</body>
+</html>

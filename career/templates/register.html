@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e7f3ff; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #003366; /* Dark blue for heading */
+        }
+
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container form input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #a7c6ed; /* Light blue border for inputs */
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .container form button {
+            padding: 10px;
+            background-color: #0056b3; /* Dark blue background for register button */
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .container form button:hover {
+            background-color: #003366; /* Darker blue on hover */
+        }
+
+        .login-link {
+            margin-top: 15px;
+            display: block;
+            color: #0056b3; /* Dark blue for the link */
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+            color: #003366; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Register</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render Django form fields -->
+        <button type="submit">Register</button>
+    </form>
+
+    <a href="{% url 'login' %}" class="login-link">Already have an account? Login here</a>
+</div>
+
+</body>
+</html>

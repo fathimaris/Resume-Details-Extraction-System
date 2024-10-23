@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f0ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #ffffff; /* White background for the container */
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        h1 {
+            text-align: center; /* Centered header */
+            color: #002366; /* Dark blue for the header */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Remove space between borders */
+            margin: 20px 0; /* Margin around the table */
+        }
+
+        th, td {
+            padding: 12px; /* Padding for table cells */
+            text-align: left; /* Left-align text */
+            border-bottom: 1px solid #ddd; /* Light border between rows */
+        }
+
+        th {
+            background-color: #f7f7f7; /* Light background for header cells */
+            color: #002366; /* Dark blue for header text */
+            text-transform: uppercase; /* Uppercase for header */
+        }
+
+        td {
+            color: #555; /* Dark gray for table data */
+        }
+
+        .skills-list, .experience-list {
+            list-style-type: none; /* No default list styling */
+            padding: 0; /* No padding */
+            margin: 0; /* No margin */
+        }
+
+        .skills-list li, .experience-list li {
+            background-color: #cce0ff; /* Light blue for list items */
+            margin: 5px 0; /* Margin between items */
+            padding: 10px; /* Padding inside list items */
+            border-radius: 5px; /* Rounded corners for list items */
+            color: #002366; /* Dark blue for list items */
+        }
+
+        .skills-list li::before, .experience-list li::before {
+            content: "•"; /* Bullet point */
+            color: #3498db; /* Blue bullet point */
+            padding-right: 10px; /* Space after bullet */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Candidate Resume Details</h1>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Details</th>
+        </tr>
+        <tr>
+            <td><strong>Name</strong></td>
+            <td>{{ resume_details.name }}</td>
+        </tr>
+        <tr>
+            <td><strong>Phone Number</strong></td>
+            <td>{{ resume_details.phone }}</td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td>{{ resume_details.email }}</td>
+        </tr>
+        <tr>
+            <td><strong>Skills</strong></td>
+            <td>
+                <ul class="skills-list">
+                    {% for skill in resume_details.skills %}
+                    <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Experience</strong></td>
+            <td>
+                <ul class="experience-list">
+                    {% for exp in resume_details.experience %}
+                    <li>{{ exp }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

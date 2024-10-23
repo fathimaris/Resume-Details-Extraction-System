@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Consistent font */
+            background-color: #e0f0ff; /* Light blue background */
+            margin: 0;
+            padding: 20px; /* Consistent padding */
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff; /* White background for the container */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            text-align: left; /* Align text to the left */
+        }
+        h1 {
+            color: #002366; /* Dark blue for heading */
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #002366; /* Dark blue for links */
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline; /* Underline on hover */
+            color: #004080; /* Darker blue on hover */
+        }
+        h2 {
+            color: #003366; /* Darker blue for subheading */
+        }
+        p {
+            color: #555; /* Darker gray for paragraph text */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>HR Dashboard</h1>
+    <nav>
+        <a href="{% url 'hr_dashboard' %}">Home</a>
+        <a href="{% url 'candidates' %}">Candidates</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+
+    <h2>Welcome, {{ request.user.username }}</h2>
+    <p>This is the HR dashboard where you can manage job candidates and postings.</p>
+</div>
+
+</body>
+</html>

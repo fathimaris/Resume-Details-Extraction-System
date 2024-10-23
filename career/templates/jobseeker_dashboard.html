@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Seeker Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh; /* Full viewport height */
+        }
+
+        .sidebar {
+            background-color: #1e3a5f; /* Dark blue background */
+            width: 250px; /* Sidebar width */
+            padding: 20px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .sidebar h2 {
+            color: #f0f8ff; /* Light blue text for sidebar heading */
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: #f0f8ff; /* Light blue links */
+            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .sidebar a:hover {
+            background-color: #16324a; /* Darker blue on hover */
+        }
+
+        .container {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff; /* White background for main content */
+            margin-left: 250px; /* To account for sidebar width */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #1e3a5f; /* Dark blue for heading */
+        }
+
+        .header a {
+            padding: 10px 20px;
+            background-color: #dc3545; /* Red background for buttons */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .header a:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        .form-container {
+            margin-top: 20px;
+            background-color: #f0f8ff; /* Light blue form background */
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #1e3a5f; /* Dark blue border */
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #1e3a5f; /* Dark blue for labels */
+        }
+
+        .form-container input {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #1e3a5f; /* Dark blue border for input fields */
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-container button {
+            padding: 12px;
+            background-color: #1e3a5f; /* Dark blue for submit button */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background-color: #16324a; /* Darker blue on hover */
+        }
+
+        .success-message {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin-left: 0; /* Remove margin for smaller screens */
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%; /* Full width sidebar */
+                padding: 10px;
+                position: absolute; /* Position absolute for smaller screens */
+                height: auto;
+                box-shadow: none;
+            }
+
+            .sidebar h2 {
+                font-size: 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Job Seeker</h2>
+<!--   -->
+    <a href="{% url 'career' %}">Career</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>Welcome to Your Dashboard</h1>
+    </div>
+
+    <!-- Success Message -->
+    {% if messages %}
+    <div class="success-message">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+</div>
+
+</body>
+</html>

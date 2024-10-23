@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidates List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f0ff; /* Light blue background */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #002366; /* Dark blue for the heading */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff; /* White background for the table */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f7f7f7; /* Light ash color for headers */
+            color: #002366; /* Dark blue for header text */
+            text-transform: uppercase; /* Uppercase for headers */
+        }
+
+        tr:hover {
+            background-color: #cce0ff; /* Light blue for row hover effect */
+        }
+
+        a {
+            color: #002366; /* Dark blue for links */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+            color: #004080; /* Darker blue on hover */
+        }
+
+        .no-candidates {
+            text-align: center;
+            color: #555; /* Darker gray for no candidates text */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Candidates</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Position Applied</th>
+            <th>Resume</th>
+            <th>More Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for candidate in candidates %}
+        <tr>
+            <td>{{ candidate.full_name }}</td>
+            <td>{{ candidate.email }}</td>
+            <td>{{ candidate.applied_position }}</td>
+            <td>
+                {% if candidate.resume %}
+                    <a href="{{ candidate.resume.url }}" download>Download Resume</a>
+                {% else %}
+                    No Resume Uploaded
+                {% endif %}
+            </td>
+            <td><a href="{% url 'candidate_detail' candidate.id %}">More Details</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="no-candidates">No candidates found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
